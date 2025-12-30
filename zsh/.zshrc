@@ -6,6 +6,10 @@
 autoload -Uz compinit
 compinit
 
+# Plugin Manager
+antidote bundle < .zsh_plugins.txt > .zsh_plugins.zsh
+source .zsh_plugins.zsh
+
 # Environment Variables
 
 export EDITOR='nvim'
@@ -15,11 +19,8 @@ export PATH="$PATH:$GEM_HOME/bin"
 export SSH_ASKPASS='/usr/bin/ksshaskpass'
 export GIT_ASKPASS='/usr/bin/ksshaskpass'
 export SSH_ASKPASS_REQUIRE='prefer'
-
-# Plugin Manager
-
-source /usr/share/zsh-antidote/antidote.zsh
-antidote load
+export MANPAGER="less --use-color -Dd+218 -Du+183"
+export MANROFFOPT="-c"
 
 # Keybindings & Shell Integrations
 

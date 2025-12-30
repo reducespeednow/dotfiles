@@ -1,4 +1,6 @@
 auto-reload yes
 reload-time 60
 notify-always yes
-notify-program /usr/bin/notify-send
+notify-program "newsboat-notify.sh"
+notify-format "New Article: %t"
+browser "brave %u"

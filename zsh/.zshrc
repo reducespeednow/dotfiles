@@ -7,6 +7,7 @@ autoload -Uz compinit
 compinit
 
 # Plugin Manager
+source /usr/share/zsh-antidote/antidote.zsh
 antidote bundle < .zsh_plugins.txt > .zsh_plugins.zsh
 source .zsh_plugins.zsh
 

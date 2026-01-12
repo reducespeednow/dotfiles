@@ -68,13 +68,20 @@ else
 fi
 
 if command -v brave &> /dev/null; then
-    echo "-------------------- Setting Brave as default browser... --------------------"
-    xdg-settings set default-web-browser brave.desktop
+    CURRENT_BROWSER=$(xdg-settings get default-web-browser)
+
+    if [ "$CURRENT_BROWSER" == "brave-browser.desktop" ]; then
+        echo "-------------------- Brave is already default. Skipping --------------------"
+    else
+    	echo "-------------------- Setting Brave as default browser... --------------------"
+        xdg-settings set default-web-browser brave.desktop
+    fi
 fi
 
 echo "-------------------- Symlinking dotfiles using GNU Stow... --------------------"
+sudo chown -R $USER_NAME:$USER_NAME "/home/$USER_NAME/.config"
 cd "/home/$USER_NAME/dotfiles"
-stow --restow nvim tmux starship fastfetch hypr kitty swaync waybar wofi -t "/home/$USER_NAME/.config"
+stow --restow nvim tmux starship fastfetch hypr kitty swaync waybar wofi zsh -t "/home/$USER_NAME"
 
 echo "-------------------- Enabling essential systemd services... --------------------"
 sudo systemctl enable NetworkManager.service

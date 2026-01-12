@@ -39,5 +39,25 @@ alias ls='lsd'
 alias vim='nvim'
 alias grep='grep --color=auto'
 
-# On Startup
+update-pkglists() {
+    echo "Generating package lists..." 
+    pacman -Qqen > ~/dotfiles/pkglist.txt
+    pacman -Qqem > ~/dotfiles/pkglist-aur.txt
+    
+    echo "Committing to git..."
+    local current_dir=$(pwd)
+    
+    cd ~/dotfiles
+    if [[ -n $(git status --porcelain pkglist.txt pkglist-aur.txt) ]]; then
+        git add pkglist.txt pkglist-aur.txt
+        git commit -m "update package lists"
+        git push
+        echo "Lists updated and committed!"
+    else
+        echo "No changes detected in package lists."
+    fi
+    
+    cd "$current_dir"
+}
+
 clear && fastfetch

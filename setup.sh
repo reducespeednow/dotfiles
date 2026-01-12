@@ -49,6 +49,8 @@ for LINE_NUMBER in "${LINE_NUMBERS[@]}"; do
     fi
 done
 
+sudo pacman -Sy
+
 echo "-------------------- Installing packages... --------------------"
 sudo pacman -S --noconfirm --needed - < pkglist.txt
 
@@ -65,10 +67,14 @@ else
     echo "-------------------- No orphaned packages found --------------------"
 fi
 
+if command -v brave &> /dev/null; then
+    echo "-------------------- Setting Brave as default browser... --------------------"
+    xdg-settings set default-web-browser brave.desktop
+fi
+
 echo "-------------------- Symlinking dotfiles using GNU Stow... --------------------"
 cd "/home/$USER_NAME/dotfiles"
 stow --restow nvim tmux starship fastfetch hypr kitty swaync waybar wofi -t "/home/$USER_NAME/.config"
-stow --restow newsboat -t "/home/$USER_NAME"
 
 echo "-------------------- Enabling essential systemd services... --------------------"
 sudo systemctl enable NetworkManager.service

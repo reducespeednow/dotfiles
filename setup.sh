@@ -79,9 +79,17 @@ if command -v brave &> /dev/null; then
 fi
 
 echo "-------------------- Symlinking dotfiles using GNU Stow... --------------------"
-sudo chown -R $USER_NAME:$USER_NAME "/home/$USER_NAME/.config"
-cd "/home/$USER_NAME/dotfiles"
-stow --restow nvim tmux starship fastfetch hypr kitty swaync waybar wofi zsh -t "/home/$USER_NAME"
+sudo chown -R $USER_NAME:$USER_NAME "$HOME/.config"
+cd "$HOME/dotfiles"
+
+stow --restow zsh -t "$HOME"
+
+for app in nvim tmux fastfetch hypr kitty swaync waybar wofi; do
+    mkdir -p "$HOME/.config/$app"
+    stow --restow $app -t "$HOME/.config/$app"
+done
+
+stow --restow starship -t "$HOME/.config"
 
 echo "-------------------- Enabling essential systemd services... --------------------"
 sudo systemctl enable NetworkManager.service

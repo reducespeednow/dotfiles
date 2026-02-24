@@ -17,6 +17,7 @@ export EDITOR='nvim'
 export PATH="$HOME/Applications:$PATH"
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export SSH_ASKPASS='/usr/bin/ksshaskpass'
 export GIT_ASKPASS='/usr/bin/ksshaskpass'
 export SSH_ASKPASS_REQUIRE='prefer'

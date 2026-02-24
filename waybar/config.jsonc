@@ -6,7 +6,7 @@
   "modules-left": [
     "hyprland/workspaces",
     "tray",
-    "custom/spotify"
+    "mpris"
   ],
   "modules-right": [
     "pulseaudio",
@@ -17,8 +17,8 @@
     "clock"
   ],
   "tray": {
-      "icon-size": 15,
-      "spacing": 10,
+    "icon-size": 15,
+    "spacing": 10
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -44,8 +44,14 @@
     },
     "format": "<span color='#a6e3a1'> {icon} </span>{capacity}% ",
     "format-charging": " 󱐋{capacity}%",
-	  "interval": 1,
-    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+    "interval": 1,
+    "format-icons": [
+      "󰂎",
+      "󰁼",
+      "󰁿",
+      "󰂁",
+      "󰁹"
+    ],
     "tooltip": true
   },
   "pulseaudio": {
@@ -80,16 +86,16 @@
     "tooltip": true,
     "tooltip-format": "{percent}%",
     "format-icons": [
-      "<span color='#696969'> 󰃞 </span>",  
-      "<span color='#A9A9A9'> 󰃝 </span>",  
-      "<span color='#FFFF66'> 󰃟 </span>",  
-      "<span color='#FFD700'> 󰃠 </span>"   
+      "<span color='#696969'> 󰃞 </span>",
+      "<span color='#A9A9A9'> 󰃝 </span>",
+      "<span color='#FFFF66'> 󰃟 </span>",
+      "<span color='#FFD700'> 󰃠 </span>"
     ]
   },
   "bluetooth": {
     "format": "<span color='#f5c2e7'></span>",
     "format-disabled": "<span color='#888888'></span>",
-    "format-off": "<span color='#888888'></span>",    
+    "format-off": "<span color='#888888'></span>",
     "format-connected": "<span color='#f5c2e7'></span>",
     "tooltip": true,
     "tooltip-format": "{controller_alias}\t{controller_address}",
@@ -97,14 +103,11 @@
     "tooltip-format-enumerate-connected": "  - {device_alias} ({device_address})",
     "tooltip-format-enumerate-connected-battery": "  - {device_alias} ({device_address}) -  {device_battery_percentage}%"
   },
-  "custom/spotify": {
-    "exec": "~/.config/waybar/mediaplayer.py",
-    "format": "{}",
-    "rotate": 0,
-    "return-type": "json",
-    "on-click": "playerctl play-pause --player spotify",
-    "on-click-middle": "playerctl stop --player spotify",
-    "tooltip": true
+  "mpris": {
+    "format": "  {artist}   <b>{title}</b>",
+    "format-paused": "    <i>{artist}   {title}</i>",
+    "format-stopped": "  Nothing playing",
+    "max-length": 40,
+    "tooltip-format": "{player} ({status})\n{artist} - {title}\n{position}/{length}"
   }
 }
-

@@ -1,6 +1,6 @@
 location=center
 show=drun
-prompt=поиск
+prompt=search
 filter_rate=100
 allow_markup=true
 no_actions=true

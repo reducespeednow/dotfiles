@@ -74,7 +74,7 @@ if command -v brave &> /dev/null; then
         echo "-------------------- Brave is already default. Skipping --------------------"
     else
     	echo "-------------------- Setting Brave as default browser... --------------------"
-        xdg-settings set default-web-browser brave.desktop
+        xdg-settings set default-web-browser brave-browser.desktop || echo "Warning: Could not set default browser"
     fi
 fi
 
@@ -84,7 +84,7 @@ cd "$HOME/dotfiles"
 
 stow --restow zsh -t "$HOME"
 
-for app in nvim tmux fastfetch hypr kitty swaync waybar wofi; do
+for app in nvim tmux fastfetch wpaperd hypr kitty swaync waybar wofi; do
     mkdir -p "$HOME/.config/$app"
     stow --restow $app -t "$HOME/.config/$app"
 done

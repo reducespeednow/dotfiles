@@ -7,7 +7,7 @@
   "control-center-layer": "top",
   "layer-shell": true,
   "layer-shell-cover-screen": true,
-  "cssPriority": "highest",
+  "cssPriority": "user",
   "control-center-margin-top": 0,
   "control-center-margin-bottom": 0,
   "control-center-margin-right": 0,
@@ -30,7 +30,7 @@
   "transition-time": 200,
   "hide-on-clear": false,
   "hide-on-action": true,
-  "text-empty": "No Notifications",
+  "text-empty": "no notifications",
   "script-fail-notify": true,
   "scripts": {
     "example-script": {
@@ -54,6 +54,7 @@
     "inhibitors",
     "title",
     "dnd",
+    "mpris",
     "notifications"
   ],
   "widget-config": {
@@ -62,16 +63,16 @@
     },
     "inhibitors": {
       "text": "Inhibitors",
-      "button-text": "удалить все",
+      "button-text": "clear all",
       "clear-all-button": true
     },
     "title": {
-      "text": "уведомления",
+      "text": "notifications",
       "clear-all-button": true,
-      "button-text": "удалить все"
+      "button-text": "clear all"
     },
     "dnd": {
-      "text": "не беспокоить"
+      "text": "dnd"
     },
     "label": {
       "max-lines": 5,

@@ -104,9 +104,9 @@
     "tooltip-format-enumerate-connected-battery": "  - {device_alias} ({device_address}) -  {device_battery_percentage}%"
   },
   "mpris": {
-    "format": "  {artist}   <b>{title}</b>",
-    "format-paused": "    <i>{artist}   {title}</i>",
-    "format-stopped": "  Nothing playing",
+    "format": " {artist}  <b>{title}</b>",
+    "format-paused": "  <i>{artist}  {title}</i>",
+    "format-stopped": " Nothing playing",
     "max-length": 40,
     "tooltip-format": "{player} ({status})\n{artist} - {title}\n{position}/{length}"
   }

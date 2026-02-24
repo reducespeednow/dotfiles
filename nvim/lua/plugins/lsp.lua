@@ -30,6 +30,7 @@ return {
             underline = true,
             update_in_insert = false,
             severity_sort = true,
+            float = { border = "rounded" }
         })
 
         vim.api.nvim_create_autocmd('LspAttach', {

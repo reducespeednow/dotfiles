@@ -14,11 +14,13 @@ return {
             markdown = { "prettier" },
             lua = { "stylua" },
             python = { "black" },
+            htmldjango = { "prettier" },
             haskell = { "ormolu" },
             java = { "google-java-format" },
             _default = { "trim_whitespace" },
             rust = { "ast-grep" },
-            c = { "clang_format" }
+            c = { "clang_format" },
+            liquid = { "prettier" }
         },
         format_on_save = {
             lsp_fallback = true,

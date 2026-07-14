@@ -1,29 +1,17 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        { "mason-org/mason.nvim", opts = {} },
+        "mason-org/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
-        { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+        { "L3MON4D3/LuaSnip",     build = "make install_jsregexp" },
         "saadparwaiz1/cmp_luasnip",
-        "j-hui/fidget.nvim",
+        { "j-hui/fidget.nvim", opts = {} },
     },
     config = function()
-        local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities()
-        )
-
-        require("fidget").setup({})
-        require("mason").setup()
-
         vim.diagnostic.config({
             virtual_text = true,
             signs = true,
@@ -33,53 +21,33 @@ return {
             float = { border = "rounded" }
         })
 
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            require("cmp_nvim_lsp").default_capabilities()
+        )
+        vim.lsp.config("*", { capabilities = capabilities })
+
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(ev)
-                local opts = { buffer = ev.buf }
+                local function map(mode, lhs, rhs, desc)
+                    vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
+                end
 
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                vim.keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
-                vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
-                vim.keymap.set('n', '[d', vim.diagnostic.goto_next, opts)
-                vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, opts)
-                vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
-                vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
-                vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
-                vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+                map('n', 'gd', vim.lsp.buf.definition, "Goto definition")
+                map('n', '<leader>vws', vim.lsp.buf.workspace_symbol, "Workspace symbols")
+                map('n', '<leader>vd', vim.diagnostic.open_float, "Line diagnostics")
+                map('n', '<leader>vca', vim.lsp.buf.code_action, "Code action")
+                map('n', '<leader>vrr', vim.lsp.buf.references, "References")
+                map('n', '<leader>vrn', vim.lsp.buf.rename, "Rename symbol")
+                map('i', '<C-h>', vim.lsp.buf.signature_help, "Signature help")
             end,
         })
 
         require('mason-lspconfig').setup({
-            automatic_installation = true,
-            handlers = {
-                function(server_name)
-                    require('lspconfig')[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-                lua_ls = function()
-                    require('lspconfig').lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = {
-                                    version = 'LuaJIT'
-                                },
-                                diagnostics = {
-                                    globals = { 'vim' },
-                                },
-                                workspace = {
-                                    library = {
-                                        vim.env.VIMRUNTIME,
-                                    }
-                                }
-                            }
-                        }
-                    })
-                end
-            }
+            ensure_installed = { "lua_ls" },
         })
 
         local cmp = require('cmp')

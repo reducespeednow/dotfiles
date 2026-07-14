@@ -1,11 +1,13 @@
 return {
     "brianhuster/live-preview.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    config = function()
-        require("live-preview").setup({
-            port = 5500,
-            browser = "default",
-            sync_scroll = true,
-        })
-    end
+    cmd = "LivePreview",
+    keys = {
+        { "<leader>mp", "<cmd>LivePreview start<CR>", desc = "Live preview start" },
+        { "<leader>ms", "<cmd>LivePreview close<CR>", desc = "Live preview stop" },
+    },
+    opts = {
+        port = 5500,
+        browser = "default",
+        sync_scroll = true
+    }
 }

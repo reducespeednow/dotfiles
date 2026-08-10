@@ -1,0 +1,45 @@
+# --- Background ---
+# Requires swaylock-effects for these two flags to work
+screenshots
+effect-blur=8x3
+
+# --- General ---
+# Show an empty indicator by default (similar to fade_on_empty = false)
+indicator-idle-visible
+indicator-radius=120
+indicator-thickness=8
+
+# --- Colors ---
+# Format is RRGGBBAA (Hex with Alpha at the end)
+
+# Transparent inner circle
+inside-color=00000000
+inside-clear-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+# Outer ring (Solid pink from your gradient)
+ring-color=f5c2e7ff
+# Checking color (Solid green)
+ring-ver-color=00ff99ff
+# Fail color (Solid red)
+ring-wrong-color=ff0066ff
+# Cleared color
+ring-clear-color=f5c2e7ff
+
+# Highlights when typing (Solid green)
+key-hl-color=00ff99ff
+# Highlight when pressing backspace (Solid orange)
+bs-hl-color=ff6633ff
+
+# Text (Gray)
+text-color=8f8f8fff
+text-ver-color=8f8f8fff
+text-wrong-color=8f8f8fff
+text-clear-color=8f8f8fff
+
+# Hide the line between the inside and the ring
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000

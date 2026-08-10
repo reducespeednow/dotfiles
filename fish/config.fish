@@ -34,6 +34,7 @@ alias grep="grep --color=auto"
 abbr gst "git status"
 abbr gaa "git add ."
 abbr gd "git diff"
+abbr gp "git push"
 abbr gcmsg "git commit -m"
 
 # -----------------------------------------------------------------------------

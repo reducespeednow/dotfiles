@@ -2,3 +2,4 @@ cache.db
 history.cmdline
 zsh_plugins.zsh
 .DS_Store
+zsh/.zsh_plugins.zsh

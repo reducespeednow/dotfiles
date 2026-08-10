@@ -3,9 +3,6 @@
 set -e
 
 USER_NAME="sara"
-COMMENT_CHAR="#"
-LINE_NUMBERS=(92 93)
-FILE_PATH="/etc/pacman.conf"
 
 echo "-------------------- Starting Arch Linux setup --------------------"
 
@@ -21,35 +18,14 @@ else
     echo "-------------------- 'yay' is already installed. Skipping --------------------"
 fi
 
-echo "-------------------- Installing Zsh and Zinit --------------------"
-sudo pacman -S --noconfirm --needed zsh
-
-if [ ! -d "/home/$USER_NAME/.local/share/zinit/zinit.git" ]; then
-    bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
-else
-    echo "-------------------- Zinit is already installed. Skipping --------------------"
-fi
-
 echo "-------------------- Enabling multilib... --------------------"
-for LINE_NUMBER in "${LINE_NUMBERS[@]}"; do
-    # sed -n '${LINE_NUMBER}p' prints only that line
-    line_content=$(sed -n "${LINE_NUMBER}p" "$FILE_PATH")
-
-    # Check if the line is commented
-    if echo "$line_content" | grep -q "^[[:space:]]*${COMMENT_CHAR}"; then
-
-        sed -i "${LINE_NUMBER}s|^[[:space:]]*${COMMENT_CHAR}\s*||" "$FILE_PATH"
-
-        echo "Successfully uncommented line $LINE_NUMBER"
-
-    elif [ -n "$line_content" ]; then
-        echo "Info: Line $LINE_NUMBER is already uncommented."
-    else
-        echo "Info: Line $LINE_NUMBER is empty. Nothing to do."
-    fi
-done
-
-sudo pacman -Sy
+if grep -q "^#\[multilib\]" /etc/pacman.conf; then
+    sudo sed -i '/^#\[multilib\]/{s/^#//;n;s/^#//}' /etc/pacman.conf
+    echo "Successfully enabled [multilib] repo."
+    sudo pacman -Sy
+else
+    echo "Info: [multilib] is already enabled or missing."
+fi
 
 echo "-------------------- Installing packages... --------------------"
 sudo pacman -S --noconfirm --needed - < pkglist.txt
@@ -93,41 +69,36 @@ echo "-------------------- Enabling essential systemd services... --------------
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable bluetooth.service
 
-if [[ "$SHELL" != *"/bin/zsh"* ]]; then
-    echo "-------------------- Changing default shell to Zsh for $USER_NAME... --------------------"
-    sudo chsh -s /bin/zsh $USER_NAME
+if [[ "$SHELL" != *"/bin/fish"* ]]; then
+    echo "-------------------- Changing default shell to Fish for $USER_NAME... --------------------"
+    sudo chsh -s "$(which fish)" "$USER_NAME"
     echo "-------------------- Default shell changed. Log out and log back in for change to take effect --------------------"
 else
-    echo "-------------------- Default shell is already Zsh. Skipping --------------------"
+    echo "-------------------- Default shell is already Fish. Skipping --------------------"
 fi
 
 echo "-------------------- Enrolling fingerprint... --------------------"
-if ! fprintd-list $(whoami) | grep -q "finger"; then
-    echo "-------------------- No fingerprints found for user $(whoami) --------------------"
+# Only run sed commands if fprintd hasn't been configured in system-local-login to prevent duplicate entries
+if ! grep -q "pam_fprintd.so" /etc/pam.d/system-local-login; then
+    echo "-------------------- Adding fprintd PAM rules... --------------------"
     sudo sed -i \
         -e '2i\auth       [success=1 default=ignore]  pam_succeed_if.so    service in sudo:su:su-l tty in :unknown' \
         -e '2i\auth sufficient pam_fprintd.so' \
         "/etc/pam.d/system-local-login"
 
-    sudo sed -i \
-        -e '2i\auth sufficient pam_fprintd.so' \
-        "/etc/pam.d/login"
+    sudo sed -i -e '2i\auth sufficient pam_fprintd.so' "/etc/pam.d/login"
+    sudo sed -i -e '2i\auth sufficient pam_fprintd.so' "/etc/pam.d/system-auth"
+    sudo sed -i -e '2i\auth sufficient pam_fprintd.so' "/etc/pam.d/su"
+    sudo sed -i -e '2i\auth sufficient pam_fprintd.so' "/etc/pam.d/sudo"
+else
+    echo "-------------------- Fingerprint PAM rules already exist. --------------------"
+fi
 
-    sudo sed -i \
-        -e '2i\auth sufficient pam_fprintd.so' \
-        "/etc/pam.d/system-auth"
-
-    sudo sed -i \
-        -e '2i\auth sufficient pam_fprintd.so' \
-        "/etc/pam.d/su"
-
-    sudo sed -i \
-        -e '2i\auth sufficient pam_fprintd.so' \
-        "/etc/pam.d/sudo"
-
+if ! fprintd-list "$(whoami)" | grep -q "finger"; then
+    echo "-------------------- No fingerprints found for user $(whoami). Enrolling... --------------------"
     fprintd-enroll
 else
-    echo "-------------------- Fingerprint already found --------------------"
+    echo "-------------------- Fingerprint already enrolled --------------------"
 fi
 
 fprintd-verify

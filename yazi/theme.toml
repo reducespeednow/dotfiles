@@ -1,0 +1,47 @@
+[mgr]
+cwd = { fg = "#f5c2e7", italic = true }
+
+hovered = { fg = "#1e1e2e", bg = "#f5c2e7", bold = true }
+preview_hovered = { underline = true }
+
+find_keyword  = { fg = "#f5c2e7", bold = true, italic = true }
+find_position = { fg = "#f5c2e7", bg = "reset", italic = true }
+
+border_style = { fg = "#f5c2e7" }
+
+[mode]
+normal_main = { fg = "#1e1e2e", bg = "#f5c2e7", bold = true }
+normal_alt  = { fg = "#f5c2e7", bg = "#313244" }
+select_main = { fg = "#1e1e2e", bg = "#fb6f92", bold = true }
+select_alt  = { fg = "#fb6f92", bg = "#313244" }
+
+[tabs]
+active   = { fg = "#1e1e2e", bg = "#f5c2e7", bold = true }
+inactive = { fg = "#f2f2f2", bg = "#1e1e2e" }
+
+[filetype]
+rules = [
+    { url = "*/", fg = "#f5c2e7" }
+]
+
+[icon]
+prepend_dirs = [
+    { name = ".config",     text = "", fg = "#f5c2e7" },
+    { name = ".git",        text = "", fg = "#f5c2e7" },
+    { name = ".github",     text = "", fg = "#f5c2e7" },
+    { name = ".npm",        text = "", fg = "#f5c2e7" },
+    { name = "Desktop",     text = "", fg = "#f5c2e7" },
+    { name = "Development", text = "", fg = "#f5c2e7" },
+    { name = "Documents",   text = "", fg = "#f5c2e7" },
+    { name = "Downloads",   text = "", fg = "#f5c2e7" },
+    { name = "Library",     text = "", fg = "#f5c2e7" },
+    { name = "Movies",      text = "", fg = "#f5c2e7" },
+    { name = "Music",       text = "", fg = "#f5c2e7" },
+    { name = "Pictures",    text = "", fg = "#f5c2e7" },
+    { name = "Public",      text = "", fg = "#f5c2e7" },
+    { name = "Videos",      text = "", fg = "#f5c2e7" },
+]
+
+prepend_conds = [
+    { if = "dir", text = "", fg = "#f5c2e7" }
+]

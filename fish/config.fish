@@ -18,6 +18,7 @@ if status is-interactive
     set -g fish_greeting
     fish_vi_key_bindings
     starship init fish | source
+    zoxide init fish | source
     if type -q thefuck
         thefuck --alias | source
     end
@@ -33,6 +34,7 @@ alias vim="nvim"
 alias grep="grep --color=auto"
 abbr gst "git status"
 abbr gaa "git add ."
+abbr ga "git add"
 abbr gd "git diff"
 abbr gp "git push"
 abbr gcmsg "git commit -m"

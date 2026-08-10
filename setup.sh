@@ -9,7 +9,7 @@ FILE_PATH="/etc/pacman.conf"
 
 echo "-------------------- Starting Arch Linux setup --------------------"
 
-echo "-------------------- Updating system and installing base-devel, git, and stow --------------------" 
+echo "-------------------- Updating system and installing base-devel, git, and stow --------------------"
 sudo pacman -Syu --noconfirm --needed base-devel git stow
 
 if ! command -v yay &> /dev/null; then
@@ -39,7 +39,7 @@ for LINE_NUMBER in "${LINE_NUMBERS[@]}"; do
     if echo "$line_content" | grep -q "^[[:space:]]*${COMMENT_CHAR}"; then
 
         sed -i "${LINE_NUMBER}s|^[[:space:]]*${COMMENT_CHAR}\s*||" "$FILE_PATH"
-        
+
         echo "Successfully uncommented line $LINE_NUMBER"
 
     elif [ -n "$line_content" ]; then
@@ -63,7 +63,7 @@ if [ -n "$orphans" ]; then
     echo "-------------------- Found orphaned packages to remove --------------------"
     echo "$orphans"
     echo "$orphans" | sudo pacman -Rns -
-else 
+else
     echo "-------------------- No orphaned packages found --------------------"
 fi
 
@@ -78,18 +78,16 @@ if command -v brave &> /dev/null; then
     fi
 fi
 
-echo "-------------------- Symlinking dotfiles using GNU Stow... --------------------"
-sudo chown -R $USER_NAME:$USER_NAME "$HOME/.config"
-cd "$HOME/dotfiles"
+echo "-------------------- Symlinking dotfiles... --------------------"
+sudo chown -R "$USER_NAME:$USER_NAME" "$HOME/.config"
 
-stow --restow zsh -t "$HOME"
-
-for app in nvim tmux fastfetch wpaperd hypr kitty swaync waybar wofi; do
-    mkdir -p "$HOME/.config/$app"
-    stow --restow $app -t "$HOME/.config/$app"
+for app in nvim tmux fastfetch wpaperd niri kitty swaync waybar fuzzel yazi fish swaylock xdg-desktop-portal xdg-desktop-portal-termfilechooser; do
+    rm -rf "$HOME/.config/$app"
+    ln -s "$HOME/dotfiles/$app" "$HOME/.config"
 done
 
-stow --restow starship -t "$HOME/.config"
+rm -f "$HOME/.config/starship.toml"
+ln -s "$HOME/dotfiles/starship.toml" "$HOME/.config"
 
 echo "-------------------- Enabling essential systemd services... --------------------"
 sudo systemctl enable NetworkManager.service
@@ -110,23 +108,23 @@ if ! fprintd-list $(whoami) | grep -q "finger"; then
         -e '2i\auth       [success=1 default=ignore]  pam_succeed_if.so    service in sudo:su:su-l tty in :unknown' \
         -e '2i\auth sufficient pam_fprintd.so' \
         "/etc/pam.d/system-local-login"
-    
+
     sudo sed -i \
         -e '2i\auth sufficient pam_fprintd.so' \
         "/etc/pam.d/login"
-    
+
     sudo sed -i \
         -e '2i\auth sufficient pam_fprintd.so' \
         "/etc/pam.d/system-auth"
-    
+
     sudo sed -i \
         -e '2i\auth sufficient pam_fprintd.so' \
         "/etc/pam.d/su"
-    
+
     sudo sed -i \
         -e '2i\auth sufficient pam_fprintd.so' \
         "/etc/pam.d/sudo"
-    
+
     fprintd-enroll
 else
     echo "-------------------- Fingerprint already found --------------------"

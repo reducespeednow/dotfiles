@@ -1,9 +1,9 @@
-anki
 brave-bin
-clipse
+docker-desktop
+minecraft-launcher
+nordvpn-gui
 notion-app-electron
-phonon-qt6-mpv
-teams
+python312
+swaylock-effects
+xdg-desktop-portal-termfilechooser-hunkyburrito-git
 yay
-yay-debug
-zsh-antidote

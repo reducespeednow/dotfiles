@@ -51,6 +51,7 @@ spawn-at-startup "swaync"
 spawn-at-startup "kitty"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet" "--indicator"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 hotkey-overlay {
     skip-at-startup
@@ -68,8 +69,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Open Launcher" { spawn "wofi" "--show" "drun"; }
-    Mod+E hotkey-overlay-title="Open File Manager" { spawn "dolphin"; }
+    Mod+Space hotkey-overlay-title="Open Launcher" { spawn "fuzzel"; }
+    Mod+E hotkey-overlay-title="Open File Manager" { spawn "kitty" "yazi"; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "brave"; }
     Mod+Shift+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
     Mod+Shift+N { spawn "swaync-client" "-t"; }

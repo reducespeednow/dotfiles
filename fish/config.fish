@@ -31,6 +31,10 @@ end
 alias ls="lsd"
 alias vim="nvim"
 alias grep="grep --color=auto"
+abbr gst "git status"
+abbr gaa "git add ."
+abbr gd "git diff"
+abbr gcmsg "git commit -m"
 
 # -----------------------------------------------------------------------------
 # Functions

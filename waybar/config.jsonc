@@ -4,7 +4,7 @@
   "height": 25,
   "spacing": 0,
   "modules-left": [
-    "hyprland/workspaces",
+    "niri/workspaces",
     "tray",
     "mpris"
   ],
@@ -20,11 +20,9 @@
     "icon-size": 15,
     "spacing": 10
   },
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "on-click": "activate",
-    "persistent-workspaces": {}
   },
   "network": {
     "format-wifi": "<span color='#f5c2e7'> 󰤨 </span> ",

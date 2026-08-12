@@ -23,6 +23,13 @@ output "eDP-1" {
     position x=1280 y=0
 }
 
+environment {
+    QT_QPA_PLATFORM "wayland"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    MOZ_ENABLE_WAYLAND "1"
+}
+
 layout {
     gaps 6
     center-focused-column "never"
@@ -63,6 +70,24 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
     draw-border-with-background false
+}
+
+window-rule {
+    match app-id="^pavucontrol$"
+    match app-id="^blueman-manager$"
+    match app-id="^nm-connection-editor$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="^file_chooser$"
+    open-floating true
+    default-column-width { proportion 0.6; }
+}
+
+window-rule {
+    match title="^Picture-in-[Pp]icture$"
+    open-floating true
 }
 
 binds {

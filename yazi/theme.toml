@@ -3,7 +3,6 @@ cwd = { fg = "#f5c2e7", italic = true }
 
 hovered = { fg = "#1e1e2e", bg = "#f5c2e7", bold = true }
 preview_hovered = { underline = true }
-
 find_keyword  = { fg = "#f5c2e7", bold = true, italic = true }
 find_position = { fg = "#f5c2e7", bg = "reset", italic = true }
 
@@ -65,6 +64,10 @@ prepend_dirs = [
     { name = "Videos",      text = "", fg = "#f5c2e7" },
 ]
 
+prepend_conds = [
+    { if = "dir", text = "", fg = "#f5c2e7" }
+]
+
 [pick]
 border   = { fg = "#f5c2e7" }
 active   = { fg = "#fb6f92", bold = true }
@@ -108,18 +111,3 @@ tbl_cell = { fg = "#f5c2e7", bg = "#45475a" }
 title_info  = { fg = "#a6e3a1" }
 title_warn  = { fg = "#f9e2af" }
 title_error = { fg = "#f38ba8" }
-
-[filetype]
-rules = [
-	{ mime = "**/image/*", fg = "#94e2d5" },
-	{ mime = "**/{audio,video}/*", fg = "#f9e2af" },
-	{ mime = "**/application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#fb6f92" },
-	{ mime = "**/application/{pdf,doc,rtf}", fg = "#a6e3a1" },
-	{ mime = "vfs/{absent,stale}", fg = "#9399b2" },
-	{ url = "*", fg = "#f2f2f2" },
-	{ url = "*/", fg = "#f5c2e7" },
-]
-
-prepend_conds = [
-    { if = "dir", text = "", fg = "#f5c2e7" }
-]

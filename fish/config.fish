@@ -22,8 +22,14 @@ if status is-interactive
     if type -q thefuck
         thefuck --alias | source
     end
-    clear
-    fastfetch
+
+    # Greet only in a top-level shell: skips tmux panes/splits, nvim's :terminal,
+    # and any nested `fish`. If this never fires, check `echo $SHLVL` in a fresh
+    # kitty window and raise the bound to match.
+    if not set -q TMUX; and not set -q NVIM; and test "$SHLVL" -le 1
+        clear
+        fastfetch
+    end
 end
 
 # -----------------------------------------------------------------------------

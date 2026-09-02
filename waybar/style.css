@@ -1,47 +1,47 @@
 * {
-    font-family: "CaskaydiaCove Nerd Font", "Noto Sans CJK";
-    font-weight: bold;
-    font-size: 12px;
-    border: none;
-    min-height: 0;
-    padding: 0;
-    margin: 0;
+  font-family: "CaskaydiaCove Nerd Font", "Noto Sans CJK";
+  font-weight: bold;
+  font-size: 12px;
+  border: none;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
 }
 
 #waybar {
-    background: rgba(30, 30, 46, 0.85);
-    color: #cdd6f4;       
+  background: rgba(30, 30, 46, 0.85);
+  color: #cdd6f4;
 }
 
 #workspaces {
-    background-color: rgba(49, 50, 68, 0.9);
-    border-radius: 12px;
-    margin: 3px 2px 3px 8px; 
-    padding: 0 2px;
+  background-color: rgba(49, 50, 68, 0.9);
+  border-radius: 12px;
+  margin: 3px 2px 3px 8px;
+  padding: 0 2px;
 }
 
 #workspaces button {
-    color: #a6adc8; 
-    padding: 2px 4px;
-    background-color: transparent;
-    border-radius: 12px;
+  color: #a6adc8;
+  padding: 2px 4px;
+  background-color: transparent;
+  border-radius: 12px;
 }
 
 #workspaces button:hover {
-    background-color: #45475a;
+  background-color: #45475a;
 }
 
 #workspaces button.active {
-    background-color: #f5c2e7; 
-    color: #11111b;           
+  background-color: #f5c2e7;
+  color: #11111b;
 }
 
 #mpris {
-	background-color: rgba(49, 50, 68, 0.9);
-	color: #f5c2e7;
-	border-radius: 12px;
-	padding: 2px 12px;
-	margin: 3px 2px 3px 0px;
+  background-color: rgba(49, 50, 68, 0.9);
+  color: #f5c2e7;
+  border-radius: 12px;
+  padding: 2px 12px;
+  margin: 3px 2px 3px 0px;
 }
 
 #bluetooth,
@@ -50,35 +50,35 @@
 #pulseaudio,
 #battery,
 #clock {
-    background-color: rgba(49, 50, 68, 0.9);
-    color: #a6adc8; 
-    padding: 2px 2px;
-    margin: 3px 0px 3px 0;
+  background-color: rgba(49, 50, 68, 0.9);
+  color: #a6adc8;
+  padding: 2px 2px;
+  margin: 3px 0px 3px 0;
 }
 
 #tray {
-    background-color: rgba(49, 50, 68, 0.9);
-    color: #a6adc8; 
-    padding: 2px 0px;
-    margin: 3px 2px 3px 0;
+  background-color: rgba(49, 50, 68, 0.9);
+  color: #a6adc8;
+  padding: 2px 0px;
+  margin: 3px 2px 3px 0;
 }
 
 #pulseaudio {
-	border-top-left-radius: 12px;
-	border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 #tray {
-	border-top-left-radius: 12px;
-	border-bottom-left-radius: 12px;
-	border-top-right-radius: 12px;
-	border-bottom-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 #clock {
-	border-top-right-radius: 12px;
-	border-bottom-right-radius: 12px;
-	margin-right: 8px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  margin-right: 8px;
 }
 
 #network:hover,
@@ -87,14 +87,19 @@
 #backlight:hover,
 #battery:hover,
 #clock:hover {
-    background-color: #45475a;
+  background-color: #45475a;
+}
+
+#battery.warning:not(.charging) {
+  color: #f9e2af;
 }
 
 #pulseaudio.muted,
 #battery.critical:not(.charging) {
-    color: #f38ba8;
+  color: #f38ba8;
 }
 
-#battery.charging, #battery.plugged {
-    color: #a6e3a1;
+#battery.charging,
+#battery.plugged {
+  color: #a6e3a1;
 }

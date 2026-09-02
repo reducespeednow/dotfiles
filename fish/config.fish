@@ -18,7 +18,7 @@ if status is-interactive
     if type -q thefuck
         thefuck --alias | source
     end
-    if not set -q TMUX; and not set -q NVIM; and test "$SHLVL" -le 1
+    if not set -q TMUX; and not set -q NVIM
         clear
         fastfetch
     end

@@ -53,6 +53,7 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "wpaperd"
 spawn-at-startup "swaync"
+spawn-at-startup "swayidle" "-w"
 spawn-at-startup "kitty"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet" "--indicator"

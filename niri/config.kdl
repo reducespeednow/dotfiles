@@ -20,14 +20,12 @@ output "eDP-1" {
     mode "2880x1920@120.000"
     scale 2
     transform "normal"
-    position x=1280 y=0
 }
 
 environment {
     QT_QPA_PLATFORM "wayland"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
-    MOZ_ENABLE_WAYLAND "1"
 }
 
 layout {

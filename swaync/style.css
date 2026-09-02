@@ -21,7 +21,6 @@
   --notification-icon-size: 64px;
   --notification-app-icon-size: 21px;
   --notification-group-icon-size: 32px;
-  --widget-volume-row-icon-size: 24px;
 
   --font-size-body: 15px;
   --font-size-summary: 16px;
@@ -46,11 +45,6 @@ blankwindow {
 
 .notification,
 .widget-mpris-player,
-.widget-label,
-.widget-buttons-grid,
-.widget-menubar,
-.widget-volume,
-.widget-slider,
 .widget-inhibitors {
   margin: 8px;
   padding: 8px;
@@ -110,12 +104,18 @@ blankwindow {
   background-color: rgb(var(--noti-bg));
 }
 
-.notification-group.collapsed .notification-row:not(:last-child) .notification-action,
-.notification-group.collapsed .notification-row:not(:last-child) .notification-default-action {
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-action,
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-default-action {
   opacity: 0;
 }
 
-.notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
+.notification-group.collapsed:hover
+  .notification-row:not(:only-child)
+  .notification {
   background-color: var(--noti-bg-hover);
 }
 
@@ -140,94 +140,31 @@ blankwindow {
   border-radius: var(--border-radius);
 }
 
-.widget-mpris .widget-mpris-player .mpris-overlay>box>button {
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button {
   border-radius: 100%;
   /* Circular media controls */
 }
 
-.widget-mpris .widget-mpris-player .mpris-overlay>box>button:hover {
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button:hover {
   background-color: var(--mpris-button-hover);
 }
 
-.widget-buttons-grid {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
-.widget-buttons-grid flowboxchild>button {
-  border-radius: var(--border-radius);
-  border: var(--border);
-  background-color: rgba(var(--noti-bg), var(--noti-bg-alpha));
-  margin: 4px;
-}
-
-.widget-buttons-grid flowboxchild>button:hover {
-  background-color: var(--noti-bg-hover);
-}
-
-.widget-menubar>.menu-button-bar>.start {
-  margin-left: 8px;
-}
-
-.widget-menubar>.menu-button-bar>.end {
-  margin-right: 8px;
-}
-
-.widget-menubar>.menu-button-bar>.widget-menubar-container button {
-  border-radius: var(--border-radius);
-  margin: 0 4px;
-}
-
-.widget-menubar>revealer * {
-  margin-top: 8px;
-}
-
-.widget-menubar>revealer * button {
-  border-radius: var(--border-radius);
-  margin: 8px;
-  margin-top: 0;
-}
-
-.widget-menubar>revealer * button:last-child {
-  margin-bottom: 0;
-}
-
-.widget-volume {
-  padding: 8px 16px;
-}
-
-.widget-volume row image {
-  -gtk-icon-size: var(--widget-volume-row-icon-size);
-}
-
-.per-app-volume {
-  background-color: var(--noti-bg-alt);
-  margin: 8px;
-  margin-bottom: 0;
-  border-radius: var(--border-radius);
-}
-
-.widget-slider label {
-  font-size: var(--font-size-body);
-}
-
-.widget-inhibitors>label,
-.widget-title>label {
+.widget-inhibitors > label,
+.widget-title > label {
   margin-right: 8px;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.widget-inhibitors>button,
-.widget-title>button {
+.widget-inhibitors > button,
+.widget-title > button {
   margin-left: 8px;
   border-radius: var(--border-radius);
   background-color: var(--noti-bg-darker);
 }
 
-.widget-inhibitors>button:hover,
-.widget-title>button:hover {
+.widget-inhibitors > button:hover,
+.widget-title > button:hover {
   background-color: var(--noti-bg-hover);
 }
 

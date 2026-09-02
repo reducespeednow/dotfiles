@@ -5,9 +5,6 @@ fish_add_path -g ~/.local/bin
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-set -gx SSH_ASKPASS /usr/bin/ksshaskpass
-set -gx GIT_ASKPASS /usr/bin/ksshaskpass
-set -gx SSH_ASKPASS_REQUIRE prefer
 set -gx MANPAGER "less --use-color -Dd+218 -Du+183"
 set -gx MANROFFOPT "-c"
 

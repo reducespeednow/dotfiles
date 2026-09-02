@@ -1,0 +1,9 @@
+timeout 300 'pgrep -x swaylock || swaylock -f'
+
+timeout 330 'niri msg action power-off-monitors' \
+     resume  'niri msg action power-on-monitors'
+
+before-sleep 'pgrep -x swaylock || swaylock -f'
+
+lock   'pgrep -x swaylock || swaylock -f'
+unlock 'pkill -USR1 swaylock'

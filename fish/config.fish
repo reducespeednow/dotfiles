@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # Environment Variables & PATH
 # -----------------------------------------------------------------------------
-fish_add_path ~/.local/bin ~/Applications
+fish_add_path -g ~/.local/bin
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
@@ -15,8 +15,7 @@ set -gx MANROFFOPT "-c"
 # Interactive Session Configs
 # -----------------------------------------------------------------------------
 if status is-interactive
-    set -g fish_greeting
-    fish_vi_key_bindings
+    set -g fish_greeting fish_vi_key_bindings
     starship init fish | source
     zoxide init fish | source
     if type -q thefuck
@@ -26,20 +25,17 @@ if status is-interactive
         clear
         fastfetch
     end
-end
 
-# -----------------------------------------------------------------------------
-# Aliases
-# -----------------------------------------------------------------------------
-alias ls="lsd"
-alias vim="nvim"
-alias grep="grep --color=auto"
-abbr gst "git status"
-abbr gaa "git add ."
-abbr ga "git add"
-abbr gd "git diff"
-abbr gp "git push"
-abbr gcmsg "git commit -m"
+    alias ls="lsd"
+    alias vim="nvim"
+    alias grep="grep --color=auto"
+    abbr gst "git status"
+    abbr gaa "git add ."
+    abbr ga "git add"
+    abbr gd "git diff"
+    abbr gp "git push"
+    abbr gcmsg "git commit -m"
+end
 
 # -----------------------------------------------------------------------------
 # Functions
@@ -48,7 +44,7 @@ function update-pkglists --description "Backup installed packages to dotfiles"
     echo "Generating package lists..."
     pacman -Qqen > ~/dotfiles/pkglist.txt; or return 1
     pacman -Qqem > ~/dotfiles/pkglist-aur.txt; or return 1
-    pushd ~/dotfiles
+    pushd ~/dotfiles; or return 1
     if test -z "$(git status --porcelain pkglist.txt pkglist-aur.txt)"
         echo "No changes detected in package lists."
         popd

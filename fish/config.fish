@@ -22,8 +22,10 @@ if status is-interactive
     if type -q thefuck
         thefuck --alias | source
     end
-    clear
-    fastfetch
+    if not set -q TMUX; and not set -q NVIM; and test "$SHLVL" -le 1
+        clear
+        fastfetch
+    end
 end
 
 # -----------------------------------------------------------------------------
@@ -60,3 +62,7 @@ function update-pkglists --description "Backup installed packages to dotfiles"
 
     popd
 end
+
+# KDB-X Installation Configuration - Fri 14 Aug 16:56:25 BST 2026
+set -gx PATH "/home/sara/.kx/bin" $PATH
+# End KDB-X Installation Configuration

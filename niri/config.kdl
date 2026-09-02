@@ -64,7 +64,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d_%H-$M-$S.png"
+screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
 
 window-rule {
     geometry-corner-radius 10

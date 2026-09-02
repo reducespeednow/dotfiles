@@ -32,8 +32,8 @@
     "tooltip-format-disconnected": "Disconnected",
     "format-linked": "<span color='#f5c2e7'> 󱘖 </span>{ifname} (No IP) ",
     "format-disconnected": "<span color='#FF4040'>  </span> ",
-    "format-alt": "<span color='#f5c2e7'> 󰤨 </span> ",
-    "interval": 1
+    "format-alt": "<span color='#f5c2e7'> 󰤨 </span> {essid} ",
+    "interval": 5
   },
   "battery": {
     "states": {
@@ -42,7 +42,7 @@
     },
     "format": "<span color='#a6e3a1'> {icon} </span>{capacity}% ",
     "format-charging": " 󱐋{capacity}%",
-    "interval": 1,
+    "interval": 30,
     "format-icons": [
       "󰂎",
       "󰁼",
@@ -68,18 +68,16 @@
       ]
     },
     "on-click-right": "pavucontrol -t 3",
-    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip": true,
     "tooltip-format": "{volume}%"
   },
   "clock": {
     "interval": 1,
-    "locale": "ru_RU.UTF-8",
     "timezone": "Europe/London",
     "format": "{:L%d %B %H:%M:%S} "
   },
   "backlight": {
-    "device": "amdgpu_bl1",
     "format": "<span color='#FFD700'>{icon}</span> ",
     "tooltip": true,
     "tooltip-format": "{percent}%",

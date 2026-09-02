@@ -1,6 +1,7 @@
 screenshots
 effect-blur=8x3
 
+font=CaskaydiaCove Nerd Font
 indicator-idle-visible
 indicator-radius=120
 indicator-thickness=8
@@ -11,14 +12,14 @@ inside-ver-color=00000000
 inside-wrong-color=00000000
 
 ring-color=f5c2e7ff
-ring-ver-color=00ff99ff
-ring-wrong-color=ff0066ff
+ring-ver-color=a6e3a1ff
+ring-wrong-color=f38ba8ff
 ring-clear-color=f5c2e7ff
 
-key-hl-color=00ff99ff
-bs-hl-color=ff6633ff
+key-hl-color=a6e3a1ff
+bs-hl-color=fab387ff
 
-text-color=8f8f8fff
+text-color=cdd6f4ff
 text-ver-color=8f8f8fff
 text-wrong-color=8f8f8fff
 text-clear-color=8f8f8fff

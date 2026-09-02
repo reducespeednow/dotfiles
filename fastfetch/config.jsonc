@@ -1,8 +1,7 @@
 {
   "logo": {
     "source": "~/.config/fastfetch/logo/aisaka.icon",
-    "height": 18,
-    "type": "kitty-direct"
+    "height": 18
   },
   "display": {
     "separator": " : "

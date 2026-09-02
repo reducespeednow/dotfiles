@@ -12,7 +12,8 @@ set -gx MANROFFOPT "-c"
 # Interactive Session Configs
 # -----------------------------------------------------------------------------
 if status is-interactive
-    set -g fish_greeting fish_vi_key_bindings
+    set -g fish_greeting
+    fish_vi_key_bindings
     starship init fish | source
     zoxide init fish | source
     if type -q thefuck

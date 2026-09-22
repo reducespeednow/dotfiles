@@ -1,9 +1,0 @@
-brave-bin
-docker-desktop
-minecraft-launcher
-nordvpn-gui
-notion-app-electron
-python312
-swaylock-effects
-xdg-desktop-portal-termfilechooser-hunkyburrito-git
-yay

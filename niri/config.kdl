@@ -22,12 +22,6 @@ output "eDP-1" {
     transform "normal"
 }
 
-environment {
-    QT_QPA_PLATFORM "wayland"
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-}
-
 layout {
     gaps 6
     center-focused-column "never"
@@ -51,13 +45,6 @@ layout {
 }
 
 spawn-at-startup "waybar"
-spawn-at-startup "wpaperd"
-spawn-at-startup "swaync"
-spawn-at-startup "swayidle" "-w"
-spawn-at-startup "kitty"
-spawn-at-startup "blueman-applet"
-spawn-at-startup "nm-applet" "--indicator"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 hotkey-overlay {
     skip-at-startup
@@ -92,9 +79,9 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Open Launcher" { spawn "fuzzel"; }
-    Mod+E hotkey-overlay-title="Open File Manager" { spawn "kitty" "yazi"; }
+    Mod+E hotkey-overlay-title="Open File Manager" { spawn "alacritty" "-e" "yazi"; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "brave"; }
     Mod+Shift+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
     Mod+Shift+N { spawn "swaync-client" "-t"; }

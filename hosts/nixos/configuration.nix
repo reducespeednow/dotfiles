@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+    imports = [ ./theme.nix ];
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/London";
 
@@ -11,6 +12,7 @@
 
   programs.niri.enable = true;
   programs.fish.enable = true;
+  programs.yazi.enable = true;
 
   users.users.sara = {
     isNormalUser = true;
@@ -20,6 +22,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    playerctl
     wget
     git
     brave
@@ -38,7 +41,6 @@
     swaylock
     libnotify
     brightnessctl
-    yazi
     waybar
     swaynotificationcenter
     wpaperd

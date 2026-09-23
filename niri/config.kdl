@@ -33,8 +33,6 @@ layout {
 
     border {
         width 2
-        active-gradient from="#f5c2e7" to="#fb6f92" angle=45
-        inactive-color "#595959aa"
     }
 
     shadow {
@@ -43,6 +41,8 @@ layout {
         color "#1a1a1aee"
     }
 }
+
+include "/etc/theme/niri.kdl"
 
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"

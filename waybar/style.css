@@ -1,0 +1,40 @@
+@import url("file:///etc/theme/waybar.css");
+
+* {
+  font-size: 12px;
+  border: none;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#waybar {
+  background: @bar_bg;
+  color: @fg;
+}
+
+#workspaces {
+  border-radius: 10px;
+  margin: 2px 2px 2px 2px;
+  padding: 0 2px;
+}
+
+#workspaces button {
+  color: @subtle;
+  padding: 2px 2px;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background-color: @hover;
+}
+
+#workspaces button.active {
+  background-color: @accent;
+  color: @bg_dark;
+}
+
+#mpris {
+    color: @accent;
+}

@@ -45,6 +45,9 @@ layout {
 }
 
 spawn-at-startup "waybar"
+spawn-at-startup "swaync"
+spawn-at-startup "wpaperd"
+spawn-at-startup "nm-applet" "--indicator"
 
 hotkey-overlay {
     skip-at-startup

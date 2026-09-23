@@ -1,0 +1,13 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "modules-left": ["niri/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "backlight", "pulseaudio", "battery"],
+  "backlight": { "format": "bri {percent}%" },
+  "clock": { "format": "{:%a %d %b  %H:%M}" },
+  "pulseaudio": { "format": "vol {volume}%" },
+  "battery": { "format": "bat {capacity}%" },
+  "tray": { "spacing": 8 }
+}

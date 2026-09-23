@@ -10,7 +10,7 @@ if status is-interactive
     end
 
     alias vim nvim
-    abbr rebuild "sudo nixos-rebuild switch --flake ~/dotfiles"
+    abbr rbd "sudo nixos-rebuild switch"
     abbr gst "git status"
     abbr gaa "git add ."
     abbr ga "git add"

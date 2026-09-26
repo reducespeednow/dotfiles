@@ -26,6 +26,8 @@
       enable = true;
       pulse.enable = true;
     };
+    services.blueman.enable = true;
+    hardware.bluetooth.enable = true;
 
     programs.niri.enable = true;
     programs.fish.enable = true;
@@ -69,6 +71,15 @@
       swaynotificationcenter
       wpaperd
       networkmanagerapplet
+      wf-recorder
+      slurp
+      psmisc
+      pavucontrol
+      nixd
+      prettier
+      stylua
+      nixfmt
+      black
     ];
 
     security.pam.services.swaylock = {};

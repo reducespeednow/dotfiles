@@ -20,6 +20,7 @@ return {
             java = { "google-java-format" },
             rust = { "rustfmt" },
             c = { "clang_format" },
+            nix = { "nixfmt" },
             ["_"] = { "trim_whitespace" },
         },
         format_on_save = {

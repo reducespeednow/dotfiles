@@ -53,6 +53,7 @@ spawn-at-startup "swayidle" "-w" \
     "timeout" "330" "niri msg action power-off-monitors" \
     "before-sleep" "swaylock -f" \
     "lock" "swaylock -f"
+spawn-at-startup "fcitx5" "-d"
 
 hotkey-overlay {
     skip-at-startup

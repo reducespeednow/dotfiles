@@ -14,9 +14,11 @@
   programs.fish.enable = true;
   programs.yazi.enable = true;
 
+  virtualisation.docker.enable = true;
+
   users.users.sara = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.fish;
   };
 
@@ -28,6 +30,7 @@
     brave
     alacritty
     fuzzel
+    zip
     tree
     neovim
     tmux

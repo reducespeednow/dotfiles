@@ -7,7 +7,10 @@
   "modules-right": ["backlight", "pulseaudio", "battery", "power-profiles-daemon"],
   "backlight": { "format": "bri {percent}%" },
   "clock": { "format": "{:%a %d %b  %H:%M}" },
-  "pulseaudio": { "format": "vol {volume}%" },
+  "pulseaudio": {
+      "format": "vol {volume}%"
+      "format-muted": "vol muted"
+  },
   "battery": { "format": "bat {capacity}%" },
   "power-profiles-daemon": { "format": "pwr {profile}%" },
   "tray": { "spacing": 8 },

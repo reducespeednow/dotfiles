@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -78,6 +79,13 @@
     "fuzzel"
   ];
 
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "spotify"
+      "discord"
+    ];
+
   environment.systemPackages = with pkgs; [
     playerctl
     wget
@@ -115,7 +123,10 @@
     wl-clipboard
     fzf
     mpv
+    spotify
+    discord
   ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   security.pam.services.swaylock = { };
   security.pam.services.login.fprintAuth = false;

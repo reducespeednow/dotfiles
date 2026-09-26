@@ -22,6 +22,10 @@
     shell = pkgs.fish;
   };
 
+  systemd.user.tmpfiles.users.sara.rules = map
+    (d: "L+ %h/.config/${d} - - - - %h/dotfiles/${d}")
+    [ "alacritty" "niri" "fish" "nvim" "tmux" "waybar" "wpaperd" "swaync" "fuzzel" ];
+
   environment.systemPackages = with pkgs; [
     vim
     playerctl

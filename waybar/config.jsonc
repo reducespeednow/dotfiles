@@ -9,6 +9,7 @@
   "clock": { "format": "{:%a %d %b  %H:%M}" },
   "pulseaudio": { "format": "vol {volume}%" },
   "battery": { "format": "bat {capacity}%" },
+  "power-profiles-daemon": { "format": "pwr {profile}%" },
   "tray": { "spacing": 8 },
   "mpris": {
     "format": " {artist} - <b>{title}</b>",

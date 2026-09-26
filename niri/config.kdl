@@ -74,12 +74,6 @@ window-rule {
 }
 
 window-rule {
-    match app-id="^file_chooser$"
-    open-floating true
-    default-column-width { proportion 0.6; }
-}
-
-window-rule {
     match title="^Picture-in-[Pp]icture$"
     open-floating true
 }

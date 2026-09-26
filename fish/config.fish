@@ -1,6 +1,5 @@
 source /etc/theme/colors.fish
 
-set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 if status is-interactive
@@ -11,7 +10,6 @@ if status is-interactive
         fastfetch
     end
 
-    alias vim nvim
     abbr rbd "sudo nixos-rebuild switch"
     abbr gst "git status"
     abbr gaa "git add ."

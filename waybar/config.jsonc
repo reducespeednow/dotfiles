@@ -4,7 +4,7 @@
   "height": 24,
   "modules-left": ["niri/workspaces", "mpris"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "backlight", "pulseaudio", "battery"],
+  "modules-right": ["tray", "backlight", "pulseaudio", "battery", "power-profiles-daemon"],
   "backlight": { "format": "bri {percent}%" },
   "clock": { "format": "{:%a %d %b  %H:%M}" },
   "pulseaudio": { "format": "vol {volume}%" },

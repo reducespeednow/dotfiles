@@ -48,6 +48,11 @@ spawn-at-startup "waybar"
 spawn-at-startup "swaync"
 spawn-at-startup "wpaperd"
 spawn-at-startup "nm-applet" "--indicator"
+spawn-at-startup "swayidle" "-w" \
+    "timeout" "300" "swaylock -f" \
+    "timeout" "330" "niri msg action power-off-monitors" \
+    "before-sleep" "swaylock -f" \
+    "lock" "swaylock -f"
 
 hotkey-overlay {
     skip-at-startup

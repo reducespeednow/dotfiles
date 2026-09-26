@@ -4,41 +4,63 @@ let
   # ── Palette: Catppuccin Mocha + your pink extras ──────────────────
   # Hex without '#'. To retheme, change these (and/or the roles below).
   p = {
-    crust    = "11111b"; mantle   = "181825"; base     = "1e1e2e";
-    surface0 = "313244"; surface1 = "45475a"; surface2 = "585b70";
-    overlay0 = "6c7086"; overlay2 = "9399b2";
-    subtext0 = "a6adc8"; subtext1 = "bac2de"; text     = "cdd6f4";
-    rosewater = "f5e0dc"; flamingo = "f2cdcd"; pink = "f5c2e7"; hotpink = "fb6f92";
-    mauve = "cba6f7"; red = "f38ba8"; peach = "fab387"; yellow = "f9e2af";
-    green = "a6e3a1"; teal = "94e2d5"; blue = "89b4fa"; lavender = "b4befe";
+    crust = "11111b";
+    mantle = "181825";
+    base = "1e1e2e";
+    surface0 = "313244";
+    surface1 = "45475a";
+    surface2 = "585b70";
+    overlay0 = "6c7086";
+    overlay2 = "9399b2";
+    subtext0 = "a6adc8";
+    subtext1 = "bac2de";
+    text = "cdd6f4";
+    rosewater = "f5e0dc";
+    flamingo = "f2cdcd";
+    pink = "f5c2e7";
+    hotpink = "fb6f92";
+    mauve = "cba6f7";
+    red = "f38ba8";
+    peach = "fab387";
+    yellow = "f9e2af";
+    green = "a6e3a1";
+    teal = "94e2d5";
+    blue = "89b4fa";
+    lavender = "b4befe";
   };
 
   # ── Roles: what the apps actually reference ──────────────────────
   c = {
-    accent  = p.pink;       # main highlight: active workspace, borders, cursor
-    accent2 = p.hotpink;    # secondary highlight: gradients, matches, keywords
-    accent3 = p.flamingo;   # soft third pink
-    bg      = p.base;       # main background
-    bgDark  = p.crust;      # text on top of accent-coloured backgrounds
-    panel   = p.surface0;   # pills, bars, cards
-    hover   = p.surface1;   # hover / selection
-    dim     = p.surface2;   # inactive borders, separators
-    muted   = p.overlay0;   # comments, disabled text
-    subtle  = p.subtext0;   # secondary text
-    fg      = p.text;       # main text
-    good    = p.green;
-    warn    = p.yellow;
-    bad     = p.red;
+    accent = p.pink; # main highlight: active workspace, borders, cursor
+    accent2 = p.hotpink; # secondary highlight: gradients, matches, keywords
+    accent3 = p.flamingo; # soft third pink
+    bg = p.base; # main background
+    bgDark = p.crust; # text on top of accent-coloured backgrounds
+    panel = p.surface0; # pills, bars, cards
+    hover = p.surface1; # hover / selection
+    dim = p.surface2; # inactive borders, separators
+    muted = p.overlay0; # comments, disabled text
+    subtle = p.subtext0; # secondary text
+    fg = p.text; # main text
+    good = p.green;
+    warn = p.yellow;
+    bad = p.red;
   };
 
   font = {
     mono = "CaskaydiaCove Nerd Font";
-    cjk  = "Noto Sans CJK SC";
+    cjk = "Noto Sans CJK SC";
     termSize = 11;
   };
 
-    hexByte = h: i: (builtins.fromTOML "v = 0x${builtins.substring i 2 h}").v;
-  rgbWith = sep: h: lib.concatMapStringsSep sep (i: toString (hexByte h i)) [ 0 2 4 ];
+  hexByte = h: i: lib.fromHexString (builtins.substring i 2 h);
+  rgbWith =
+    sep: h:
+    lib.concatMapStringsSep sep (i: toString (hexByte h i)) [
+      0
+      2
+      4
+    ];
   # ──────────────────────────────────────────────────────────────────
 in
 {
@@ -48,8 +70,14 @@ in
     noto-fonts-cjk-sans
   ];
   fonts.fontconfig.defaultFonts = {
-    monospace = [ font.mono font.cjk ];
-    sansSerif = [ "Noto Sans" font.cjk ];
+    monospace = [
+      font.mono
+      font.cjk
+    ];
+    sansSerif = [
+      "Noto Sans"
+      font.cjk
+    ];
   };
 
   environment.etc = {
@@ -67,27 +95,26 @@ in
     '';
 
     # ── swaync (GTK4): CSS variables ──
-        "theme/swaync.css".text =
-      ''
-        @import url("file://${pkgs.swaynotificationcenter}/etc/xdg/swaync/style.css");
+    "theme/swaync.css".text = ''
+      @import url("file://${pkgs.swaynotificationcenter}/etc/xdg/swaync/style.css");
 
-        :root {
-          --cc-bg: alpha(#${c.bg}, 0.85);
-          --noti-bg: ${rgbWith ", " c.panel};
-          --noti-bg-alpha: 0.8;
-          --noti-bg-darker: #${p.mantle};
-          --noti-bg-hover: #${c.hover};
-          --noti-bg-focus: alpha(#${c.hover}, 0.6);
-          --noti-border-color: #${c.accent};
-          --noti-close-bg: alpha(#${c.fg}, 0.1);
-          --noti-close-bg-hover: alpha(#${c.fg}, 0.15);
-          --text-color: #${c.fg};
-          --text-color-disabled: #${c.muted};
-          --bg-selected: #${c.accent};
-        }
+      :root {
+        --cc-bg: alpha(#${c.bg}, 0.85);
+        --noti-bg: ${rgbWith ", " c.panel};
+        --noti-bg-alpha: 0.8;
+        --noti-bg-darker: #${p.mantle};
+        --noti-bg-hover: #${c.hover};
+        --noti-bg-focus: alpha(#${c.hover}, 0.6);
+        --noti-border-color: #${c.accent};
+        --noti-close-bg: alpha(#${c.fg}, 0.1);
+        --noti-close-bg-hover: alpha(#${c.fg}, 0.15);
+        --text-color: #${c.fg};
+        --text-color-disabled: #${c.muted};
+        --bg-selected: #${c.accent};
+      }
 
-        * { font-family: "${font.mono}", "${font.cjk}", sans-serif; }
-      '';
+      * { font-family: "${font.mono}", "${font.cjk}", sans-serif; }
+    '';
 
     # ── niri: pink gradient border ──
     "theme/niri.kdl".text = ''

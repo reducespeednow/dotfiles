@@ -11,6 +11,9 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    nix.gc = { automatic = true; dates = "weekly"; options = "--delete-older-than 14d";};
+    nix.settings.auto-optimise-store = true;
+
     swapDevices = [{
       device = "/dev/disk/by-partuuid/5e6f8da9-1c22-4512-b67a-cc7c4578fbb8";
       randomEncryption.enable = true;

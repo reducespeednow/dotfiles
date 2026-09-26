@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -11,6 +9,8 @@
     ./hardware-configuration.nix
   ];
   networking.networkmanager.enable = true;
+  networking.hostName = "charlie";
+  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   time.timeZone = "Europe/London";
 
   boot.loader.systemd-boot.enable = true;
@@ -30,7 +30,6 @@
     }
   ];
 
-  networking.hostName = "charlie";
   system.stateVersion = "26.05"; # Did you read the comment?
 
   services.pipewire = {
@@ -52,6 +51,7 @@
     viAlias = true;
     vimAlias = true;
   };
+  programs.zoxide.enable = true;
 
   virtualisation.docker.enable = true;
 
@@ -111,6 +111,8 @@
     nixfmt
     black
     swayidle
+    wl-clipboard
+    fzf
   ];
 
   security.pam.services.swaylock = { };

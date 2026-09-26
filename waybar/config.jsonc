@@ -8,7 +8,7 @@
   "backlight": { "format": "bri {percent}%" },
   "clock": { "format": "{:%a %d %b  %H:%M}" },
   "pulseaudio": {
-      "format": "vol {volume}%"
+      "format": "vol {volume}%",
       "format-muted": "vol muted"
   },
   "battery": { "format": "bat {capacity}%" },

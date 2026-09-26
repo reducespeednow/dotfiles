@@ -41,6 +41,7 @@
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   services.fwupd.enable = true;
+  services.fprintd.enable = true;
 
   programs.niri.enable = true;
   programs.fish.enable = true;
@@ -113,7 +114,10 @@
     swayidle
     wl-clipboard
     fzf
+    mpv
   ];
 
   security.pam.services.swaylock = { };
+  security.pam.services.login.fprintAuth = false;
+  security.soteria.enable = true;
 }

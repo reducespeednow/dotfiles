@@ -149,6 +149,7 @@
     mpv
     spotify
     discord
+    wlsunset
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

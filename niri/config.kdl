@@ -48,6 +48,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "swaync"
 spawn-at-startup "wpaperd"
 spawn-at-startup "nm-applet" "--indicator"
+spawn-at-startup "wlsunset" "-l" "51.5" "-L" "-0.1" "-t" "3500"
 spawn-at-startup "swayidle" "-w" \
     "timeout" "300" "swaylock -f" \
     "timeout" "330" "niri msg action power-off-monitors" \

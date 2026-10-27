@@ -2,6 +2,8 @@ source /etc/theme/colors.fish
 
 set -gx VISUAL nvim
 
+test -f ~/local-ai/shell/ai.fish; and source ~/local-ai/shell/ai.fish
+
 if status is-interactive
     set -g fish_greeting
     fish_vi_key_bindings

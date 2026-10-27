@@ -39,10 +39,14 @@
   };
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   services.fwupd.enable = true;
   services.fprintd.enable = true;
+  services.joycond.enable = true;
+  services.input-remapper.enable = true;
+  services.input-remapper.enableUdevRules = true;
 
   programs.niri.enable = true;
   programs.fish.enable = true;
@@ -112,6 +116,7 @@
 
   environment.systemPackages = with pkgs; [
     playerctl
+    curl
     wget
     git
     brave
@@ -150,8 +155,10 @@
     spotify
     discord
     wlsunset
+    input-remapper
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.localBinInPath = true;
 
   security.pam.services.swaylock = { };
   security.pam.services.login.fprintAuth = false;

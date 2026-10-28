@@ -11,7 +11,20 @@
       "format": "vol {volume}%",
       "format-muted": "vol muted"
   },
-  "battery": { "format": "bat {capacity}%" },
+  "battery": {
+      "format": "{icon} {capacity}%",
+      "states": {
+          "warning": 20,
+          "critical": 10
+      },
+      "format-charging": "󰂄 {capacity}%",
+      "format-plugged": "󰚥 {capacity}%",
+      "format-full": "󰁹 {capacity}%",
+      "format-warning": "󰂃 {capacity}%",
+      "format-critical": "󰂃 {capacity}%",
+      "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"],
+      "tooltip-format": "{timeTo} ({power:.1f} W)"
+  },
   "power-profiles-daemon": { "format": "pwr {profile}%" },
   "tray": { "spacing": 8 },
   "mpris": {

@@ -37,11 +37,16 @@
     enable = true;
     pulse.enable = true;
   };
+  services.upower = {
+    enable = true;
+    percentageLow = 20;
+    percentageCritical = 10;
+    percentageAction = 5;
+  };
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
   services.fwupd.enable = true;
   services.fprintd.enable = true;
   services.joycond.enable = true;
@@ -107,6 +112,17 @@
     "fuzzel"
   ];
 
+  systemd.user.services.poweralertd = {
+    description = "Battery/power notifications";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Restart = "on-failure";
+      ExecStart = "${pkgs.poweralertd}/bin/poweralertd";
+    };
+  };
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
@@ -116,6 +132,7 @@
 
   environment.systemPackages = with pkgs; [
     playerctl
+    poweralertd
     curl
     wget
     git

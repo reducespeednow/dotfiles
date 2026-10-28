@@ -36,5 +36,29 @@
 }
 
 #mpris {
-    color: @accent;
+  color: @accent;
+}
+
+#battery {
+  color: #f5c2e7;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+  color: #fab387;
+}
+
+#battery.critical:not(.charging) {
+  color: #f38ba8;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  to {
+    color: #1e1e2e;
+  }
 }
